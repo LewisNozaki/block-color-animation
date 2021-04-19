@@ -30,7 +30,7 @@ body {
   width: 80%;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
   column-gap: 1em;
   row-gap: 1em;
   padding: 1em;
