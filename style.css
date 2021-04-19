@@ -26,12 +26,30 @@ body {
 }
 
 .grid-container {
-  border: 1px solid #000;
+  overflow: auto;
   width: 80%;
-}
-
-input, button {
-  margin-top: 2em;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  column-gap: 1em;
+  row-gap: 1em;
   padding: 1em;
 }
 
+input, button {
+  margin: 1.2em;
+  padding: 1em;
+}
+
+button {
+  text-transform: uppercase;
+}
+
+button:hover,
+button:focus {
+  cursor: pointer;
+}
+
+.block {
+  border: 1px solid black;
+}
