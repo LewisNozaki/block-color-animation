@@ -2,6 +2,10 @@
 
 let grid = document.getElementsByClassName("grid-container")[0];
 
+///////////////////////
+// Create Grid Logic //
+///////////////////////
+
 let nBlocks = document.getElementById("nBlocks");
 
 let createBlocksBtn = document.getElementById("create-blocks");
@@ -17,3 +21,15 @@ const createGrid = () => {
 };
 
 createBlocksBtn.addEventListener("click", createGrid);
+
+///////////////////////////
+// Color Blocks Function //
+///////////////////////////
+
+let timer = null;
+
+let counter = 0;
+
+let limit = document.getElementsByClassName("block").length;
+
+let fill = true;
