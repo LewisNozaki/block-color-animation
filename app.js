@@ -26,12 +26,8 @@ createBlocksBtn.addEventListener("click", createGrid);
 // Color Blocks Function //
 ///////////////////////////
 
-let block = document.getElementsByClassName("block");
-
+const blocks = document.getElementsByClassName("block");
 let counter = 0;
-
-let limit = block.length;
-
 let fill = true;
 
 const addColor = (box) => box.classList.add("on");
@@ -42,31 +38,34 @@ let timer = null;
 const move = () => {
   timer = setTimeout(() => {
     // Unfill the blocks
-    if (limit === 0) {
-      fill = !fill;
-      limit = block.length;
-    };
+    // if (limit === 0) {
+    //   fill = false;
+    //   limit = blocks.length;
+    // } else {
+    //   fill = true;
+    //   limit = limit;
+    // }
 
     // Removes or Adds color after each iteration
     if (counter > 0) {
       if (fill) {
-        removeColor([...block][counter - 1]);
+        removeColor(blocks[counter - 1])
       } else {
-        addColor([...block][counter - 1]);
+        addColor(blocks[counter - 1])
       }
-    }
+    };
 
     if (fill) {
-      addColor(block[counter]);
+      addColor(blocks[counter]);
     } else if (!fill) {
-      removeColor(block[counter]);
+      removeColor(blocks[counter]);
     }
 
     counter++;
 
-    if (counter < limit) {
+    if (counter < blocks.length) {
       move();
-    } else if (counter === limit) {
+    } else if (counter === blocks.length) {
       counter = 0;
       limit--;
       move();
@@ -87,9 +86,9 @@ stopBtn.addEventListener("click", stop);
 
 // Reset Button
 const reset = () => {
-  [...element].forEach(removeColor);
+  [...blocks].forEach(removeColor);
   counter = 0;
-  limit = element.length;
+  limit = blocks.length;
   fill = true;
 };
 
