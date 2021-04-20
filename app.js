@@ -10,6 +10,8 @@ let nBlocks = document.getElementById("nBlocks");
 
 let createBlocksBtn = document.getElementById("create-blocks");
 
+let limit = 0;
+
 const createGrid = () => {
   let numBlocks = parseInt(nBlocks.value);
 
@@ -18,6 +20,8 @@ const createGrid = () => {
     newBlock.classList.add("block");
     grid.appendChild(newBlock);
   }
+
+  limit = numBlocks;
 };
 
 createBlocksBtn.addEventListener("click", createGrid);
@@ -38,13 +42,9 @@ let timer = null;
 const move = () => {
   timer = setTimeout(() => {
     // Unfill the blocks
-    // if (limit === 0) {
-    //   fill = false;
-    //   limit = blocks.length;
-    // } else {
-    //   fill = true;
-    //   limit = limit;
-    // }
+    fill = limit === 0 ? !fill : fill;
+
+    limit = limit === 0 ? blocks.length : limit;
 
     // Removes or Adds color after each iteration
     if (counter > 0) {
@@ -57,20 +57,20 @@ const move = () => {
 
     if (fill) {
       addColor(blocks[counter]);
-    } else if (!fill) {
+    } else {
       removeColor(blocks[counter]);
     }
 
     counter++;
 
-    if (counter < blocks.length) {
+    if (counter < limit) {
       move();
-    } else if (counter === blocks.length) {
+    } else if (counter === limit) {
       counter = 0;
       limit--;
       move();
     }
-  }, 200);
+  }, 100);
 };
 
 const moveBtn = document.getElementById("move");
