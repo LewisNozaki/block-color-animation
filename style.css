@@ -53,3 +53,7 @@ button:focus {
 .block {
   border: 1px solid black;
 }
+
+.on {
+  background: aquamarine;
+}
