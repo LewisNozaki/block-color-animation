@@ -92,3 +92,7 @@ const reset = () => {
   limit = element.length;
   fill = true;
 };
+
+const resetBtn = document.getElementById("reset");
+
+resetBtn.addEventListener("click", reset);
